@@ -11,7 +11,7 @@ def calc_lissajous(A1, A2, n):
     t = 0
 
     for _ in range(t_num_points):
-        x_values.append(A1 * math.cos(t))  # Используем sin для оси X
+        x_values.append(A1 * math.cos(t))  # Используем cos для оси X
         y_values.append(A2 * math.sin(n * t))  # Используем sin для оси Y
         t += step
 
