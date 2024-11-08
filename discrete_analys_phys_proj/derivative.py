@@ -9,43 +9,30 @@
 # для конечной точки (x0 = N-1)
 # 3. y′(x0​) = (y(0​-2) - 4y(0 - 1) + 3y(0​)) / 2 / h​
 
-def calc_derevative(y, step):
+def derivative(y, step):
     n = len(y)
-    derivatives = []
-    # step это h в формуле
-
-    # начальная точка
-    derivatives.append((-y[2] + 4 * y[1] - 3 * y[0]) / (2 / step))
-
-    # Для любой внутренней точки (x0, y0)
-    # (x0 = N-1)
-    for point in range(1, n - 1):
-        derivatives.append((y[point + 1] - y[point - 1]) / (2 / step))
+    result = []
     
-    # Для конечной точки (x0 = N-1)
-    derivatives.append((y[-2] - 4 * y[-1] + 3 * y[-3]) / (2 / step))
+    for i in range(n):
+        if i == 0:
+            # для начальной точки (x0 = 0)
+            value = (-y[i+2] + 4 * y[i+1] - 3 * y[i]) / (2 * step)
+        elif i == n - 1:
+            # для конечной точки (x0 = N-1)
+            value = (y[i-2] - 4 * y[i-1] + 3 * y[i]) / (2 * step)
+        else:
+            # для внутренней точки 
+            value = (y[i+1] - y[i-1]) / (2 * step)
+        
+        result.append(value)
     
-    return derivatives
-
-def calc_derevative2(first, step):
-    n = len(first)
-    sec_derev = []
-
-    for point in range(1, n - 1):
-        sec_derev.append(first[point + 1] - first[point - 1] / (2 / step))
-
-    return sec_derev
-
+    return result
 
 def main():
-    y = [1, 2, 3, 4, 5, 6]
-    step = 1
-    
-    first = calc_derevative(y, step)
-    second = calc_derevative2(first, step)
+    x = [0, 1, 2, 3, 4, 5]
+    first = derivative(x, step=1)
+    print(f" Первая производная: {first}\
+          \n Вторая производная: {derivative(first, step=1)}")
 
-    print(f"Первая производная: {first}")
-    print(f"Вторая производная: {second}")
 
 main()
-
