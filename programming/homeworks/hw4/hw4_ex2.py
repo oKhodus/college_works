@@ -6,7 +6,7 @@ def number_of_days():
 
     month_input = input("Enter the number of a month (1-12) or word |done| to quit: ")
 
-    while month_input.lower() != "done":
+    while month_input.lower().strip() != "done":
 
         try:
 
@@ -22,6 +22,6 @@ def number_of_days():
             print(incorrect_inp)
         month_input = input("Enter the number of a month (1-12) or word |done| to quit: ")
 
-    print(f"Your program was stopped, because your last input was |{month_input}|")
+    print(f"Your program was stopped, because your last input was |{month_input.strip()}|.")
 
 number_of_days()
