@@ -10,9 +10,8 @@ class Node:
 
 
 class LinkedList:
-    """_summary_
-    """
     def __init__(self):
+        """_summary_"""
         self.head = None
 
     def insert_head(self, value):
@@ -21,11 +20,43 @@ class LinkedList:
         self.head = new_node
 
     def insert_tail(self, value):
+
         new_node = Node(value)
+
+        if self.head is None:
+            self.head = new_node
+            return
+
         current_node = self.head
         while current_node.next != None:
             current_node = current_node.next
         current_node.next = new_node
+
+    def insert_byPos(self, value, pos):
+        """_summary_
+
+        Args:
+            value (_type_): _description_
+            pos (_type_): _description_
+        """
+
+        if pos <= 0:
+            self.insert_head(value)
+            return
+
+        new_node = Node(value)
+        current_node = self.head
+        count = 0
+
+        while current_node != None and count < pos - 1:
+            current_node = current_node.next
+            count += 1
+
+        if current_node is None:
+            self.insert_tail(value)
+        else:
+            new_node.next = current_node.next
+            current_node.next = new_node
 
     def delete(self, value):
         if self.head is None:
@@ -43,7 +74,6 @@ class LinkedList:
 
         if current_node.next != None:
             current_node.next = current_node.next.next
-
 
     def display(self):
         current_node = self.head
@@ -73,10 +103,14 @@ ll.insert_tail(12)
 ll.display()
 print(f"was added 4 nodes in tail\n")
 
+ll.insert_byPos(99, 2)
+ll.display()
+print(f"was inserted 99 in position 2\n")
+
 ll.delete(12)
 ll.delete(3)
 ll.display()
-print(f"was deleted 2 node\n")
+print(f"was deleted 2 nodes\n")
 
 # print(
 #     "Hello welcome to [LinkedListApp]\nif you wanna start creation of Linked List - enter commands:\n\
