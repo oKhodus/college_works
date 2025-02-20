@@ -1,2 +1,1 @@
-hw is homeworks.
-prac is practices from lessons.
+My path through Information Tech. Systems Development in University of Tartu
