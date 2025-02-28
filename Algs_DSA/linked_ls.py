@@ -1,4 +1,6 @@
 class Node:
+    """_summary_
+    """
     def __init__(self, value):
         """_summary_
 
@@ -8,57 +10,48 @@ class Node:
         self.value = value
         self.next = None
 
-
 class LinkedList:
+    """_summary_
+    """
     def __init__(self):
-        """_summary_"""
+        """_summary_
+        """
         self.head = None
 
-    def insert_head(self, value):
-        new_node = Node(value)
-        new_node.next = self.head
-        self.head = new_node
-
-    def insert_tail(self, value):
-
-        new_node = Node(value)
-
-        if self.head is None:
-            self.head = new_node
-            return
-
-        current_node = self.head
-        while current_node.next != None:
-            current_node = current_node.next
-        current_node.next = new_node
-
-    def insert_byPos(self, value, pos):
+    def insert_at_head(self, value):
         """_summary_
 
         Args:
             value (_type_): _description_
-            pos (_type_): _description_
         """
+        new_node = Node(value)
+        new_node.next = self.head
+        self.head = new_node
 
-        if pos <= 0:
-            self.insert_head(value)
+    def insert_at_tail(self, value):
+        """_summary_
+
+        Args:
+            value (_type_): _description_
+        """
+        new_node = Node(value)
+
+        if self.head is None:
+            new_node.next = self.head
+            self.head = new_node
             return
 
-        new_node = Node(value)
-        current_node = self.head
-        count = 0
-
-        while current_node != None and count < pos - 1:
-            current_node = current_node.next
-            count += 1
-
-        if current_node is None:
-            self.insert_tail(value)
-        else:
-            new_node.next = current_node.next
-            current_node.next = new_node
-
+        current = self.head
+        while current.next != None:
+            current = current.next
+        current.next = new_node
+        
     def delete(self, value):
+        """_summary_
+
+        Args:
+            value (_type_): _description_
+        """
         if self.head is None:
             return
 
@@ -66,73 +59,36 @@ class LinkedList:
             self.head = self.head.next
             return
 
-        current_node = self.head
-        # next_node = current_node.next
-
-        while current_node.next != None and current_node.next.value != value:
-            current_node = current_node.next
-
-        if current_node.next != None:
-            current_node.next = current_node.next.next
+        current = self.head
+        while current.next != None and current.next.value != value:
+            current = current.next
+        
+        if current.next != None:
+            current.next = current.next.next
 
     def display(self):
+        """_summary_
+        """
         current_node = self.head
-        count = 1
+        # print("head:")
         while current_node != None:
-            name = f"list_head(node_{count})" if count == 1 else f"node_{count}"
-            print(f"|{name}: {current_node.value}|", end=" ")
+            print(current_node.value, end="|")
             current_node = current_node.next
-            count += 1
-
-        print(f"|list_tail: {current_node}|")
-
+        # print(f"tail:", None)
 
 ll = LinkedList()
 
-ll.insert_head(3)
-ll.insert_head(3)
-ll.insert_head(2)
-ll.insert_head(1)
-ll.display()
-print(f"was added 4 nodes in head\n")
+ll.insert_at_head(3)
+ll.insert_at_head(2)
+ll.insert_at_head(1)
 
-ll.insert_tail(4)
-ll.insert_tail(5)
-ll.insert_tail(6)
-ll.insert_tail(12)
-ll.display()
-print(f"was added 4 nodes in tail\n")
+ll.insert_at_tail(4)
+ll.insert_at_tail(5)
+ll.insert_at_tail(6)
 
-ll.insert_byPos(99, 2)
-ll.display()
-print(f"was inserted 99 in position 2\n")
-
-ll.delete(12)
+ll.delete(1)
 ll.delete(3)
+ll.delete(5)
+
 ll.display()
-print(f"was deleted 2 nodes\n")
-
-# print(
-#     "Hello welcome to [LinkedListApp]\nif you wanna start creation of Linked List - enter commands:\n\
-# \n['-head'] if wanna add to head of list\n['-tail'] if wanna add to tail of list\n"
-# )
-
-# cmd = input("Enter a command: ")
-# if cmd == "-head":
-#     path = "head"
-# elif cmd == "-tail":
-#     path = "tail"
-
-# while True:
-#     elem = input(f"\nEnter numbers for {path} or '-added' to finish adding to list: ")
-#     if elem != "-added" and path == "head":
-#         ll.insert_head(elem)
-#     elif elem != "-added" and path == "tail":
-#         ll.insert_tail(elem)
-#         # elem = input("Enter numbers for head or \'added\' to finish adding to list: ")
-#     else:
-#         ll.display()
-#         break
-
-# except Exception:
-#     pass
+#--- 2|4|6|
