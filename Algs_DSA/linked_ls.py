@@ -1,38 +1,35 @@
 class Node:
-    """_summary_
-    """
+    """A class creating a node in a linked list."""
     def __init__(self, value):
-        """_summary_
+        """Initialize a new node with a given value
 
         Args:
-            value (_type_): _description_
+            value (int, float, str and etc.): _description_
         """
         self.value = value
         self.next = None
 
 class LinkedList:
-    """_summary_
-    """
+    """A class representing a singly linked list"""
     def __init__(self):
-        """_summary_
-        """
+        """Initialize an empty linked list with --head--"""
         self.head = None
 
     def insert_at_head(self, value):
-        """_summary_
+        """Insert a new node with the given value at the HEAD of the list
 
         Args:
-            value (_type_): _description_
+            value (int, float, str and etc.): The value which will be inserted
         """
         new_node = Node(value)
         new_node.next = self.head
         self.head = new_node
 
     def insert_at_tail(self, value):
-        """_summary_
+        """Insert a new node with the given value at the TAIL of the list
 
         Args:
-            value (_type_): _description_
+            value (int, float, str and etc.): The value which will be inserted
         """
         new_node = Node(value)
 
@@ -47,10 +44,10 @@ class LinkedList:
         current.next = new_node
         
     def delete(self, value):
-        """_summary_
+        """Delete the first occurrence of a NODE with the given value
 
         Args:
-            value (_type_): _description_
+            value (int, float, str and etc.): The value of the node to be deleted
         """
         if self.head is None:
             return
@@ -67,14 +64,13 @@ class LinkedList:
             current.next = current.next.next
 
     def display(self):
-        """_summary_
-        """
+        """Print the values of all nodes in the linked list"""
         current_node = self.head
         # print("head:")
         while current_node != None:
             print(current_node.value, end="|")
             current_node = current_node.next
-        # print(f"tail:", None)
+        # print(f"tail: {None}")
 
 ll = LinkedList()
 
