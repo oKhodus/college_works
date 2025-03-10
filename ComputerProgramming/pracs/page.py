@@ -1,13 +1,25 @@
 class Paginator:
-    def __init__(self, list, page_size):
-        self.ls = iter(list)
+    def __init__(self, data, page_size):
+        """Paginator for splitting data into pages
+
+        Args:
+            data (list): The list of items to paginate
+            page_size (int): The number of items per page
+        """
+        self.ls = iter(data)
         self.n = page_size
         self.curr = 0
 
     def __iter__(self):
+        """Returns the iterator itself"""
         return self
 
     def __next__(self):
+        """Returns the next page of data.
+
+        Raises:
+            StopIteration: If all pages have been returned.
+        """
         max_size = self.n
         data = []
 
