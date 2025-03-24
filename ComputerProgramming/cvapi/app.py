@@ -11,7 +11,7 @@ cv_data = {
     "contact": {
         "email": "exalchel@gmail.com",
         "linkedin": "https://www.linkedin.com/in/oleksii-khodus-235b32263/",
-        "github": "github.com/khodus",
+        "github": "github.com/oKhodus",
     },
     "education": [
         {"degree": "BSc IT Systems Development", "year": "2027", "university": "University of Tartu"}
