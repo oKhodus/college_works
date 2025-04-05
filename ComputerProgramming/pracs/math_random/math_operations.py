@@ -3,7 +3,7 @@ from random import randint
 
 
 def add(a, b):
-    """function which implenment summary
+    """function which implement summary
 
     Args:
         a (int): first integer
@@ -16,7 +16,7 @@ def add(a, b):
 
 
 def multiply(a, b):
-    """function which implenment multiplication 
+    """function which implement multiplication
 
     Args:
         a (int): first integer
