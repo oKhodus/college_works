@@ -1,5 +1,12 @@
+from datetime import datetime
+
 class BankAccount:
     interest_rate = 0.005
+    counter = 0
+    # types = {
+    #     "D", "W", "I", "X"
+    # }
+
     def __init__(
         self,
         account_number: int,
@@ -14,9 +21,17 @@ class BankAccount:
 
         self._balance = 0.0
 
+    @classmethod
+    def _next_tx_id(cls):
+        cls.counter += 1
+        return f"{cls.counter:03d}"
+
     def apply_interest(self):
         calc = self._balance * self.interest_rate
         self._balance += calc
+        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+        tx_id = self._next_tx_id()
+        print(f"I-{self.account_number}-{timestamp}-{tx_id}")
         return self._balance
 
     def get_balance(self):
@@ -25,11 +40,20 @@ class BankAccount:
     def deposit(self, inp):
         if inp > 0:
             self._balance += inp
+            timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+            tx_id = self._next_tx_id()
+            print(f"D-{self.account_number}-{timestamp}-{tx_id}")
 
     def withdraw(self, out):
         if out <= self._balance:
             self._balance -= out
+            timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+            tx_id = self._next_tx_id()
+            print(f"W-{self.account_number}-{timestamp}-{tx_id}")
         else:
+            timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+            tx_id = self._next_tx_id()
+            print(f"X-{self.account_number}-{timestamp}-{tx_id}")
             print("Insufficient funds")
 
 
