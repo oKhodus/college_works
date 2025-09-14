@@ -1,5 +1,4 @@
 add new options:
-    inches to cm and backwards
     pounds to kg and backwards
     ounces to grammes and backwards
 

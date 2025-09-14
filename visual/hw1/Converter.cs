@@ -10,8 +10,10 @@ class Converter
     2. Convert from °F to °C
     3. Convert from miles to kilometres
     4. Convert from kilometres to miles
+    5. Convert from inches to centimetres
+    6. Convert from centimetres to inches
 
-Choose option from 1 to 4: ";
+Choose option from 1 to 6: ";
         Console.Write(invitation_text);
         int input_option = Convert.ToInt32(Console.ReadLine());
         switch (input_option)
@@ -44,6 +46,20 @@ Choose option from 1 to 4: ";
                 float mile = (float)(km_converted * 0.621371);
                 Console.WriteLine($"Distance in miles: {mile} miles");
                 break;
+            case 5:
+                Console.Write("Enter value of distance in inches: ");
+                string input_inch = Console.ReadLine();
+                double inch_converted = Convert.ToDouble(input_inch);
+                float cm = (float)(inch_converted * 2.54);
+                Console.WriteLine($"Distance in centimetres: {cm} centimetres");
+                break;
+            case 6:
+                Console.Write("Enter value of distance in centimetres: ");
+                string input_cm = Console.ReadLine();
+                double cm_converted = Convert.ToDouble(input_cm);
+                float inch = (float)(cm_converted / 2.54);
+                Console.WriteLine($"Distance in inches: {inch} inches");
+                break;
         }
     }
 }
@@ -53,3 +69,5 @@ Choose option from 1 to 4: ";
 // °C = (°F - 32) × 5/9 option 2.
 // miles * 1.60934
 // km * 0.621371
+// cm / 2.54
+// inch * 2.54
