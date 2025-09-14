@@ -1,0 +1,8 @@
+refactor convertation of F and C :
+    1. output of double must be in float
+
+add new options:
+    miles to kms and backwards
+    inches to cm and backwards
+    pounds to kg and backwards
+    ounces to grammes and backwards
