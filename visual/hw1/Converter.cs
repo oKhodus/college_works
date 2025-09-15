@@ -12,8 +12,10 @@ class Converter
     4. Convert from kilometres to miles
     5. Convert from inches to centimetres
     6. Convert from centimetres to inches
+    7. Convert from pounds to kilogrammes
+    8. Convert from kilogrammes to pounds
 
-Choose option from 1 to 6: ";
+Choose option from 1 to 8: ";
         Console.Write(invitation_text);
         int input_option = Convert.ToInt32(Console.ReadLine());
         switch (input_option)
@@ -37,7 +39,7 @@ Choose option from 1 to 6: ";
                 string input_miles = Console.ReadLine();
                 double miles_converted = Convert.ToDouble(input_miles);
                 float km = (float)(miles_converted * 1.60934);
-                Console.WriteLine($"Distance in km: {km} kilometres");
+                Console.WriteLine($"Distance in km: {km} km");
                 break;
             case 4:
                 Console.Write("Enter value of distance in kilometres: ");
@@ -51,14 +53,28 @@ Choose option from 1 to 6: ";
                 string input_inch = Console.ReadLine();
                 double inch_converted = Convert.ToDouble(input_inch);
                 float cm = (float)(inch_converted * 2.54);
-                Console.WriteLine($"Distance in centimetres: {cm} centimetres");
+                Console.WriteLine($"Distance in centimetres: {cm} cm");
                 break;
             case 6:
                 Console.Write("Enter value of distance in centimetres: ");
                 string input_cm = Console.ReadLine();
                 double cm_converted = Convert.ToDouble(input_cm);
                 float inch = (float)(cm_converted / 2.54);
-                Console.WriteLine($"Distance in inches: {inch} inches");
+                Console.WriteLine($"Distance in inches: {inch} in");
+                break;
+            case 7:
+                Console.Write("Enter value of weight in pounds: ");
+                string input_pound = Console.ReadLine();
+                double pound_conv = Convert.ToDouble(input_pound);
+                float kg = (float)(pound_conv * 0.45359237);
+                Console.WriteLine($"Weight in kilogrammes: {kg} kg");
+                break;
+            case 8:
+                Console.Write("Enter value of weight in kilogrammes: ");
+                string input_kg = Console.ReadLine();
+                double kg_conv = Convert.ToDouble(input_kg);
+                float pound = (float)(kg_conv * 2.20462);
+                Console.WriteLine($"Weight in pounds: {pound} lb");
                 break;
         }
     }
@@ -71,3 +87,5 @@ Choose option from 1 to 6: ";
 // km * 0.621371
 // cm / 2.54
 // inch * 2.54
+// Kilograms = Pounds × 0.45359237
+// Pounds = Kilograms × 2.20462

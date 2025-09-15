@@ -1,5 +1,4 @@
 add new options:
-    pounds to kg and backwards
     ounces to grammes and backwards
 
 
