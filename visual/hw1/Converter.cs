@@ -14,8 +14,10 @@ class Converter
     6. Convert from centimetres to inches
     7. Convert from pounds to kilogrammes
     8. Convert from kilogrammes to pounds
+    9. Convert from ounces to grammes
+   10. Convert from grammes to ounces
 
-Choose option from 1 to 8: ";
+Choose option from 1 to 10: ";
         Console.Write(invitation_text);
         int input_option = Convert.ToInt32(Console.ReadLine());
         switch (input_option)
@@ -76,6 +78,20 @@ Choose option from 1 to 8: ";
                 float pound = (float)(kg_conv * 2.20462);
                 Console.WriteLine($"Weight in pounds: {pound} lb");
                 break;
+            case 9:
+                Console.Write("Enter value of weight in ounces: ");
+                string input_ounces = Console.ReadLine();
+                double oz_conv = Convert.ToDouble(input_ounces);
+                float g = (float)(oz_conv * 28.3495);
+                Console.WriteLine($"Weight in grammes: {g} g");
+                break;
+            case 10:
+                Console.Write("Enter value of weight in grammes: ");
+                string input_g = Console.ReadLine();
+                double g_conv = Convert.ToDouble(input_g);
+                float oz = (float)(g_conv / 28.3495);
+                Console.WriteLine($"Weight in ounces: {oz} oz");
+                break;
         }
     }
 }
@@ -89,3 +105,5 @@ Choose option from 1 to 8: ";
 // inch * 2.54
 // Kilograms = Pounds × 0.45359237
 // Pounds = Kilograms × 2.20462
+// Grams = Ounces x 28.3495
+// oz = g / 28.3495

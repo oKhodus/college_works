@@ -1,5 +1,2 @@
-add new options:
-    ounces to grammes and backwards
-
-
+refactor float issue in outputs
 add kind of try except when were inputed incorrect values
