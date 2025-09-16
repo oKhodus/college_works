@@ -1,5 +1,5 @@
 using System;
-
+using Calc;
 class Converter
 {
     static void Main(string[] args)
@@ -24,17 +24,13 @@ Choose option from 1 to 10: ";
         {
             case 1:
                 Console.Write("Enter value of temperature in Celsius: ");
-                string input_celsius = Console.ReadLine();
-                double celsius_converted = Convert.ToDouble(input_celsius);
-                float fahrenheit_calc = (float)((celsius_converted * 9 / 5) + 32);
-                Console.WriteLine($"Temperature in Fahrenheit: {fahrenheit_calc}°");
+                double input_celsius = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine($"Temperature in Fahrenheit: {CalcAndConv.CelsiusToFahrenheit(input_celsius)}°");
                 break;
             case 2:
                 Console.Write("Enter value of temperature in Fahrenheit: ");
-                string input_fahr = Console.ReadLine();
-                double fahrenheit_converted = Convert.ToDouble(input_fahr);
-                float celsius_calc = (float)((fahrenheit_converted - 32) * 5 / 9);
-                Console.WriteLine($"Temperature in Celsius: {celsius_calc}°");
+                double input_fahr = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine($"Temperature in Celsius: {CalcAndConv.FahrenheitToCelsius(input_fahr)}°");
                 break;
             case 3:
                 Console.Write("Enter value of distance in miles: ");

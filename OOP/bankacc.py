@@ -1,3 +1,5 @@
+from datetime import datetime
+
 class BankAccount:
     def __init__(
         self,
@@ -13,31 +15,44 @@ class BankAccount:
         self._balance = 0.0
 
     interest_rate = 0.005
+    id = 0
 
     def apply_interest(self):
         self._balance += (self._balance * self.interest_rate)
-        return self._balance
+        self.id += 1
+        current_time = datetime.today().strftime('%Y%m%d%H%M%S')
+        transaction_id = "{:03d}".format(self.id)
+        return f"I-{self.account_number}-{current_time}-{transaction_id}"
+        # return self._balance
 
     def get_balance(self):
         return self._balance
 
     def deposit(self, amount: float):
         self._balance += amount
+        self.id += 1
+        current_time = datetime.today().strftime('%Y%m%d%H%M%S')
+        transaction_id = "{:03d}".format(self.id)
+        return f"D-{self.account_number}-{current_time}-{transaction_id}"
 
     def withdraw(self, amount: float):
+        self.id += 1
+        current_time = datetime.today().strftime('%Y%m%d%H%M%S')
+        transaction_id = "{:03d}".format(self.id)
+
         if amount > self._balance:
             print("Insufficient funds")
-            return
+            return f"X-{self.account_number}-{current_time}-{transaction_id}"
+        
         self._balance -= amount
+        return f"W-{self.account_number}-{current_time}-{transaction_id}"
 
 
 acc1 = BankAccount(140568, "Anna", "Smith", -7)
 acc2 = BankAccount(222222, "Ben", "Lee", 2)
 
-acc1.deposit(1000)
-acc2.deposit(500)
-
-BankAccount.interest_rate = 0.01  # 1%
-acc1.apply_interest()  # 1010.0
-acc2.apply_interest()  # 505.0
-print(acc1.get_balance(), acc2.get_balance())
+print(acc1.deposit(1000))
+print(acc1.withdraw(1100))
+print(acc1.apply_interest())
+print(acc1.withdraw(100))
+print(acc1.get_balance())
