@@ -49,19 +49,24 @@ class BankAccount:
     @staticmethod
     def parse_confirmation(confirmation_code, timezone_offset):
         code_arr = confirmation_code.split("-")
+        type_code, account_num, timestamp, trans_id = code_arr
 
-        utc_now = datetime.now(timezone.utc)
-        current_time_utc = utc_now.strftime("%Y-%m-%dT%H:%M:%S")
+        utc_dt = datetime.strptime(timestamp, "%Y%m%d%H%M%S")
 
-        local_time = utc_now + timedelta(hours=timezone_offset)
-        time_local = local_time.strftime("%Y-%m-%d %H:%M:%S")
+        local_dt = utc_dt + timedelta(hours=timezone_offset)
 
         @dataclass
-        class ParseConf:
-            transaction_code: str = code_arr[0]
-            account_number: int = int(code_arr[1])
-            transaction_id: int = int(code_arr[3])
-            time_utc: str = current_time_utc
-            time: str = time_local
+        class ParsedConfirmation:
+            transaction_code: str
+            account_number: int
+            transaction_id: int
+            time_utc: str
+            time: str
 
-        return ParseConf
+        return ParsedConfirmation(
+            transaction_code=type_code,
+            account_number=int(account_num),
+            transaction_id=int(trans_id),
+            time_utc=utc_dt.strftime("%Y-%m-%dT%H:%M:%S"),
+            time=local_dt.strftime("%Y-%m-%d %H:%M:%S"),
+        )
